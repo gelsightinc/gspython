@@ -55,7 +55,11 @@ def readscan(fpath):
     sdata = SData()
     with open(fpath, 'r') as stream:
         data_loaded = yaml.safe_load(stream)
-        sdata.version = data_loaded['version']
+        check_version = data_loaded.get('version')
+        if check_version is not None:
+            sdata.version = data_loaded['version']
+        else:
+            sdata.version = 3.0
         sdata.calib = findcalib(data_loaded['calib'], parentdr)
         sdata.crop = data_loaded['crop']
         sdata.guid = data_loaded['guid']
@@ -65,7 +69,7 @@ def readscan(fpath):
     if sdata.version >= 2:
         scancontext = os.path.join(parentdr, 'Analysis/scancontext.yaml')
         if not os.path.isfile(scancontext):
-            print('not a valid file path')
+            print('Analysis/scancontext.yaml does not exist')
         else:
             sdata.annotations = loadshapesasannotations(scancontext)
 

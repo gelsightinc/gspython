@@ -2,7 +2,6 @@ import os
 import numpy as np
 import struct
 import argparse
-import cv2
 
 def readnrm(fpath):
 #   The return value NRM is an M-by-N-by-3 array containing the unit-length

@@ -2,7 +2,6 @@ import os
 import numpy as np
 import struct
 import argparse
-import cv2
 
 def getprofile(heightMap, res, x1, y1, x2, y2, normalized=False):
     p1 = np.array((x1, y1))

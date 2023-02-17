@@ -2,12 +2,6 @@ import os
 import numpy as np
 import struct
 import argparse
-import cv2
-
-import readscan
-from readscan import *
-import readimg
-from readimg import *
 
 class Scan():
     def __init__(self):

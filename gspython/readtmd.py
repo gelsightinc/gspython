@@ -2,7 +2,6 @@ import os
 import numpy as np
 import struct
 import argparse
-import cv2
 
 class Header():
     def __init__(self):

@@ -1,9 +1,6 @@
 import os
 import argparse
 import numpy as np
-import cv2
-# import readscan
-# from readscan import *
 
 def readimg(fpath, ch='0', varargin=None):
     imout = None
