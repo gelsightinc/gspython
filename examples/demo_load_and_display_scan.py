@@ -1,22 +1,33 @@
 import os
-import gspython
+import sys
+sys.path.append('C:\\Users\\zhaoc\\source\\repos\\gspython')
+from gspython import *
 import matplotlib.pyplot as plt
+
 
 def main():
 
     # Load a previously saved scan
-    scanpath = os.path.dirname("./testdata/Dime/")
-    sdata = gspython.readscan(scanpath)
+    scanpath = 'C:\\Users\\Public\\Documents\\GelSight\\Scans\\Magnet_line_test_scans\\G500-001'
+    basename = os.path.basename(scanpath)
+    basename += '.tmd'
+    fpath = os.path.join(scanpath, basename)
+    # sdata = readscan(scanpath)
 
-    # Display the scan data
-    print(sdata)
+    # # Display the scan data
+    # print(sdata)
 
-    # Display the scan images
-    for im in sdata.images:
-        image = plt.imread(im)
-        plt.figure()
-        plt.imshow(image)
+    # # Display the scan images
+    # for im in sdata.images:
+    #     image = plt.imread(im)
+    #     plt.figure()
+    #     plt.imshow(image)
 
+    # plt.show()
+
+    stmd = readtmd(fpath)
+    plt.figure()
+    plt.imshow(stmd[0])
     plt.show()
 
 if __name__ == "__main__":

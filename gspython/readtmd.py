@@ -81,17 +81,12 @@ def readtmd(fpath):
 
         headerData.mmpp = headerData.lengthx/headerData.imW
 
-        pxOffX = int(headerData.offsetx/headerData.mmpp)
-        pxOffY = int(headerData.offsety/headerData.mmpp)
-        fullW = headerData.imW + pxOffX
-        fullH = headerData.imH + pxOffY
-
-        heightMap = np.zeros((int(fullH), int(fullW)), dtype=np.float32)
-        # heightMap = np.zeros((headerData.imH, headerData.imW), dtype=np.float32)
+        heightMap = np.zeros((int(headerData.imH), int(headerData.imW)), dtype=np.float32)
         for y in range(headerData.imH):
             start = end
             end += float_len*headerData.imW
-            heightMap[y+pxOffY:y+pxOffY+1][pxOffX:]= struct.unpack('f'*headerData.imW, tmd[start:end])
+            heightMap[y:y+1]= struct.unpack('f'*headerData.imW, tmd[start:end])
+
 
     return heightMap, headerData
 
