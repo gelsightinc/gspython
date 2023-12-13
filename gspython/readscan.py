@@ -86,7 +86,7 @@ def loadshapesasannotations(fpath):
     with open(fpath, 'r') as stream:
         fd = yaml.safe_load(stream)
         annotations = None
-        if fd.get('shapes'):
+        if fd is not None and fd.get('shapes'):
             annotations = loadannotations(fd['shapes'])
 
         return annotations
